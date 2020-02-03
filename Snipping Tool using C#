@@ -1,4 +1,11 @@
-       
+HOW TO USE:
+/////////
+            var bmp = SnippingTool.Snip();
+            if (bmp != null)
+            {
+                bmp.Save("data\\Capture2Text\\kq.jpg", ImageFormat.Jpeg);
+            }
+////////
         public partial class SnippingTool : Form
         {
             public static System.Drawing.Image Snip()
@@ -86,5 +93,6 @@
                 // Allow canceling the snip with the Escape key
                 if (keyData == Keys.Escape) this.DialogResult = DialogResult.Cancel;
                 return base.ProcessCmdKey(ref msg, keyData);
+                //phatjk
             }
         }
