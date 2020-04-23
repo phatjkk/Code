@@ -26,3 +26,26 @@ public bool _CheckMouseLeftClick()
                 return false;
             }
         }
+////Check Dobble Click
+int Clicks = 0;
+if (_CheckMouseLeftClick() == true)
+                {
+                    startdate = DateTime.Now;
+                    Clicks += 1;
+                    if (Clicks >= 2)
+                    {
+                        Clicks = 0;
+                        x = System.Windows.Forms.Cursor.Position.X;
+                        y = System.Windows.Forms.Cursor.Position.Y;
+
+                    }
+                    while (_CheckMouseLeftClick())
+                    {
+                        Thread.Sleep(10);
+                    }
+                }
+                if (Clicks != 0 && (DateTime.Now - startdate).TotalSeconds > 0.5f)
+                {
+                    Clicks = 0;
+
+                }
