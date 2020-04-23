@@ -1,0 +1,16 @@
+            var client = new RestClient("https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Cookie", _cc.Text);
+            IRestResponse response = client.Execute(request);
+            if (response.Content.Contains("EAA"))
+            {
+                this.Hide();
+                Login form = new Login(_cc.Text);
+                form.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Cookie đã die, vui lòng nhập lại!");
+            }
