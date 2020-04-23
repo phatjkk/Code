@@ -1,3 +1,4 @@
+///Translate Auto to English
 private void Translate(string text,string language=en)
         {
             using (var wb = new WebClient())
