@@ -1,0 +1,28 @@
+////https://www.autoitscript.com/autoit3/docs/libfunctions/_IsPressed.htm
+Get number of the key
+////https://www.rapidtables.com/convert/number/hex-to-decimal.html?x=0x{{Number}}
+=> vKey
+[DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
+public bool _CheckKeyPressed(int i)
+        {
+            if ((GetAsyncKeyState(i) & 0x8000) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+public bool _CheckMouseLeftClick()
+        {
+            if ((GetAsyncKeyState(1) & 0x8000) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
