@@ -1,0 +1,19 @@
+Workbook workbook = new Workbook();
+                Worksheet sheet = workbook.Worksheets[0];
+                sheet.Name = nameprofile + "_" + DateTime.UtcNow.ToString("MM-dd-yyyy");
+                sheet.Range["A1"].Text = "Username:";
+                sheet.Range["A2"].Text = "ID:";
+                sheet.Range["B1"].Text = nameprofile;
+                sheet.Range["B2"].Text = idprofile;
+                sheet.Range["A4"].Text = "STT";
+                sheet.Range["B4"].Text = "FRIENDS_NAME";
+                sheet.Range["C4"].Text = "LINK";
+                for (int i = 0; i < max; i++)
+                {
+
+                    sheet.Range["A" + (i + 5).ToString()].Text = (i).ToString();
+                    sheet.Range["B" + (i + 5).ToString()].Text = savejson["data"][i]["name"].ToString();
+                    sheet.Range["C" + (i + 5).ToString()].Text = savejson["data"][i]["id"].ToString();
+                }
+                workbook.SaveToFile(nameprofile + "_" + DateTime.UtcNow.ToString("MM-dd-yyyy") + ".xls", ExcelVersion.Version97to2003);
+                System.Diagnostics.Process.Start(nameprofile + "_" + DateTime.UtcNow.ToString("MM-dd-yyyy") + ".xls");
