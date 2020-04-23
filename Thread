@@ -1,0 +1,4 @@
+thread7 = new Thread(() => OpenLoadingBox());
+thread7.SetApartmentState(ApartmentState.STA);//Set if UI
+thread7.IsBackground = true;
+thread7.Start();
