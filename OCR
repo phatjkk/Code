@@ -1,0 +1,21 @@
+ if (bmp != null)
+            {
+                if (System.IO.File.Exists(Directory.GetCurrentDirectory() + "\\data\\Capture2Text\\kq.jpg"))
+                    System.IO.File.Delete(Directory.GetCurrentDirectory() + "\\data\\Capture2Text\\kq.jpg");
+                bmp.Save(Directory.GetCurrentDirectory() + "\\data\\Capture2Text\\kq.jpg", ImageFormat.Jpeg);
+                bmp.Dispose();
+                var proc = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "data\\Capture2Text\\Capture2Text_CLI.exe",
+                        Arguments = "-i data\\Capture2Text\\kq.jpg" + " -l " + @"""" + langarr[indexarr] + @"""" + " -o data\\kq.txt",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+                proc.Start();
+                proc.WaitForExit();
+                string kqorc = File.ReadAllText("data\\kq.txt", Encoding.UTF8);
+               } 
