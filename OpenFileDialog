@@ -1,0 +1,13 @@
+Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Title = "Support *.doc, *.docx, *.odf, *.pdf, *.ppt, *.pptx, *.ps, *.rtf, *.txt, *.xls, *.xlsx";
+            dlg.Filter = "(Support Files)|*.doc;*.docx;*.odf;*.pdf;*.ppt;*.pptx;*.ps;*.rtf;*.txt;*.xls;*.xlsx"; //filter files by extension
+
+            // Show save file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
