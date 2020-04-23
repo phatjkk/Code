@@ -1,0 +1,32 @@
+            this.Hide();
+            string laythongtin = httpGet("https://raw.githubusercontent.com/phatjkk/Tool/master/DragonSubtitle.txt");
+            if (laythongtin.Contains("TOOLOPEN"))
+            {
+                if (!laythongtin.Contains(ver))
+                {
+                    string urlupdate = "";
+                    foreach (Match m in Regex.Matches(laythongtin, @"link=""(.*?)""", options))
+                    {
+                        urlupdate = m.Value;
+                    }
+                    MessageBox.Show("Your program version is old, we will go to the update website!", "Update message");
+                    System.Diagnostics.Process.Start(urlupdate);
+
+                    System.Environment.Exit(0);
+                }
+                else
+                {
+                    ThreaLoad = new Thread(() => openload());
+                    ThreaLoad.SetApartmentState(ApartmentState.STA);
+                    ThreaLoad.Start();
+                }
+                
+            }
+            else
+            {
+                foreach (Match m in Regex.Matches(laythongtin, @"closemessage=""(.*?)""", options))
+                {
+                    MessageBox.Show(m.Value, "Message");
+                }
+                System.Environment.Exit(0);
+            }
