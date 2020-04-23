@@ -1,0 +1,13 @@
+            var client = new RestClient("https://graph.facebook.com/v3.0/me/friends?access_token=" + tk + "&limit=5000&fields=id,name");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            string data = response.Content;
+            JToken stuff = JToken.Parse(data);
+            savejson = stuff;
+            int count = Regex.Matches(data, @"""id""").Count;
+            max = count;
+            for (int i = 0; i < count; i++)
+            {
+                this._list.Items.Add(new MyItem { Stt = i, Link = "https://facebook.com/" + stuff["data"][i]["id"], Name = stuff["data"][i]["name"].ToString() });
+            }
