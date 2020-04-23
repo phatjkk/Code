@@ -1,0 +1,5 @@
+//////Return Value
+js = (IJavaScriptExecutor)chromeDriver;
+string img = (string)js.ExecuteScript("return document.getElementById('start_img').src");
+//////Not Return Value
+js.ExecuteScript("document.getElementById('start_img').click();");
