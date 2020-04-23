@@ -1,0 +1,6 @@
+///Set Text
+Clipboard.SetText(new_text.Text);
+///Send Ctrl + C
+SendKeys.SendWait("^(c)");
+///Get Text
+System.Windows.Clipboard.GetText();
