@@ -1,0 +1,40 @@
+public ChromeDriver KhoiTaoChrome(ChromeDriver chromeDriver = null, bool loadimage = false)
+        {
+
+            while (1 == 1)
+            {
+
+                try
+                {
+                        ChromeOptions chromeProfile = new ChromeOptions();
+                        chromeProfile.AcceptInsecureCertificates = true;
+                        if (loadimage == true)
+                        {
+                            chromeProfile.AddArgument("--blink-settings=imagesEnabled=false");
+                        }
+                        chromeProfile.AddArguments(new string[]
+{
+            "--disable-extensions",
+            "--disable-notifications",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--disable-dev-shm-usage"
+});
+                        //chromeProfile.AddArguments("user-data-dir=" + ProfileFolderPath + "\\" + profile);
+                        chromeProfile.AddArgument("disable-infobars");
+                        chromeProfile.AddArgument("use-fake-ui-for-media-stream");
+                        chromeProfile.AddArgument("--window-position=-32000,-32000");
+                        ChromeDriverService service = ChromeDriverService.CreateDefaultService(Environment.CurrentDirectory, "chromedriver.exe");
+                        service.HideCommandPromptWindow = true;
+
+                        chromeDriver = new ChromeDriver(service, chromeProfile, DefaultCommandTimeout);
+                        break;
+
+                }
+                catch
+                {
+                    if (chromeDriver != null) { chromeDriver.Quit(); }
+                }
+            }
+            return chromeDriver;
+        }
