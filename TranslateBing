@@ -1,0 +1,19 @@
+private void Translate(string text,string language=en)
+        {
+            using (var wb = new WebClient())
+            {
+                var data = new NameValueCollection();
+                data["text"] = text;
+                var response = wb.UploadValues("https://translate.yandex.net/api/v1.5/tr/translate?key=trnsl.1.1.20181013T093321Z.a0ef93987c6e29fe.9ecb20d363505875d246008b6a8156757b7b8498&format=plain&lang=" + language, "POST", data);
+                responseInString = Encoding.UTF8.GetString(response);
+                string pattern = @"(?<=\<text\>)(\s*.*\s*)(?=\<\/text\>)";
+                RegexOptions options = RegexOptions.Multiline;
+
+                foreach (Match m in Regex.Matches(responseInString, pattern, options))
+                {
+                    responseInString = m.Value + "\n";
+                }
+                //responseInString = FindTextBetween(responseInString, "text>", "<") + "\n";
+
+            }
+        }
