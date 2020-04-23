@@ -1,0 +1,1 @@
+Clipboard.SetText(new_text.Text);
