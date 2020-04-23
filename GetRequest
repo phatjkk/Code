@@ -1,0 +1,8 @@
+public static string httpGet(string url)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            WebClient webClient = new WebClient();
+            string htmlString = webClient.DownloadString(url);
+            return htmlString;
+        }
