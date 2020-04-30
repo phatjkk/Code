@@ -1,0 +1,11 @@
+Right-click your WPF project to add new Item: "Add->New Item..."
+Select "Application Manifest File" and click Add
+Double Click your newly created manifest file and change the
+
+<requestedExecutionLevel level="asInvoker" uiAccess="false" />
+
+to
+
+<requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+
+Then the WPF application would run as Administrator.
