@@ -3,3 +3,4 @@
 3) create-electron-app <app-name>
 => Done
 to run => npm run start
+to build => npm run build-installer
