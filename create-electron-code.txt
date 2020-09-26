@@ -1,0 +1,5 @@
+1) npm install electron -g
+2) npm install create-electron-app -c
+3) create-electron-app <app-name>
+=> Done
+to run => npm run start
