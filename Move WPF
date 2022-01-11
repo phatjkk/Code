@@ -1,0 +1,11 @@
+I used the event MouseDown:
+
+<Window .....
+     MouseDown="Window_MouseDown"  >
+with this code:
+
+  private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+  {
+     if(e.ChangedButton == MouseButton.Left)
+        this.DragMove();
+  }
